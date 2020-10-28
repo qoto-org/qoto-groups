@@ -31,11 +31,7 @@ class Api::V1::AccountsController < Api::BaseController
   end
 
   def follow
-    FollowService.new.call(current_user.account, @account, reblogs: truthy_param?(:reblogs), with_rate_limit: true)
-
-    options = @account.locked? || current_user.account.silenced? ? {} : { following_map: { @account.id => { reblogs: truthy_param?(:reblogs) } }, requested_map: { @account.id => false } }
-
-    render json: @account, serializer: REST::RelationshipSerializer, relationships: relationships(options)
+    raise Mastodon::NotPermittedError
   end
 
   def block
@@ -49,8 +45,7 @@ class Api::V1::AccountsController < Api::BaseController
   end
 
   def unfollow
-    UnfollowService.new.call(current_user.account, @account)
-    render json: @account, serializer: REST::RelationshipSerializer, relationships: relationships
+    raise Mastodon::NotPermittedError
   end
 
   def unblock

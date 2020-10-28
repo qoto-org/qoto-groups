@@ -15,9 +15,6 @@
   media_cleanup_scheduler:
     cron: '<%= Random.rand(0..59) %> <%= Random.rand(3..5) %> * * *'
     class: Scheduler::MediaCleanupScheduler
-  feed_cleanup_scheduler:
-    cron: '<%= Random.rand(0..59) %> <%= Random.rand(0..2) %> * * *'
-    class: Scheduler::FeedCleanupScheduler
   doorkeeper_cleanup_scheduler:
     cron: '<%= Random.rand(0..59) %> <%= Random.rand(0..2) %> * * 0'
     class: Scheduler::DoorkeeperCleanupScheduler

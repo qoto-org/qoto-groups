@@ -21,9 +21,6 @@ class RemoveStatusService < BaseService
 
     RedisLock.acquire(lock_options) do |lock|
       if lock.acquired?
-        remove_from_self if status.account.local?
-        remove_from_followers
-        remove_from_lists
         remove_from_affected
         remove_reblogs
         remove_from_hashtags
@@ -50,22 +47,6 @@ class RemoveStatusService < BaseService
   end
 
   private
-
-  def remove_from_self
-    FeedManager.instance.unpush_from_home(@account, @status)
-  end
-
-  def remove_from_followers
-    @account.followers_for_local_distribution.reorder(nil).find_each do |follower|
-      FeedManager.instance.unpush_from_home(follower, @status)
-    end
-  end
-
-  def remove_from_lists
-    @account.lists_for_local_distribution.select(:id, :account_id).reorder(nil).find_each do |list|
-      FeedManager.instance.unpush_from_list(list, @status)
-    end
-  end
 
   def remove_from_affected
     @mentions.map(&:account).select(&:local?).each do |account|
@@ -137,24 +118,18 @@ class RemoveStatusService < BaseService
   end
 
   def remove_from_public
-    return unless @status.public_visibility?
+    return unless @status.distributable?
 
-    redis.publish('timeline:public', @payload)
     if @status.local?
       redis.publish('timeline:public:local', @payload)
-    else
-      redis.publish('timeline:public:remote', @payload)
     end
   end
 
   def remove_from_media
-    return unless @status.public_visibility?
+    return unless @status.distributable?
 
-    redis.publish('timeline:public:media', @payload)
     if @status.local?
       redis.publish('timeline:public:local:media', @payload)
-    else
-      redis.publish('timeline:public:remote:media', @payload)
     end
   end
 

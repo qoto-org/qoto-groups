@@ -6,7 +6,7 @@ class Api::V1::Timelines::HomeController < Api::BaseController
   after_action :insert_pagination_headers, unless: -> { @statuses.empty? }
 
   def show
-    @statuses = load_statuses
+    @statuses = Status.none
 
     render json: @statuses,
            each_serializer: REST::StatusSerializer,

@@ -26,11 +26,9 @@ import {
   Status,
   GettingStarted,
   KeyboardShortcuts,
-  PublicTimeline,
   CommunityTimeline,
   AccountTimeline,
   AccountGallery,
-  HomeTimeline,
   Followers,
   Following,
   Reblogs,
@@ -87,10 +85,8 @@ const keyMap = {
   moveDown: ['down', 'j'],
   moveUp: ['up', 'k'],
   back: 'backspace',
-  goToHome: 'g h',
   goToNotifications: 'g n',
   goToLocal: 'g l',
-  goToFederated: 'g t',
   goToDirect: 'g d',
   goToStart: 'g s',
   goToFavourites: 'g f',
@@ -176,7 +172,7 @@ class SwitchingColumnsArea extends React.PureComponent {
     const { children } = this.props;
     const { mobile } = this.state;
     const singleColumn = forceSingleColumn || mobile;
-    const redirect = singleColumn ? <Redirect from='/' to='/timelines/home' exact /> : <Redirect from='/' to='/getting-started' exact />;
+    const redirect = singleColumn ? <Redirect from='/' to='/timelines/public/local' exact /> : <Redirect from='/' to='/getting-started' exact />;
 
     return (
       <ColumnsAreaContainer ref={this.setRef} singleColumn={singleColumn}>
@@ -184,8 +180,6 @@ class SwitchingColumnsArea extends React.PureComponent {
           {redirect}
           <WrappedRoute path='/getting-started' component={GettingStarted} content={children} />
           <WrappedRoute path='/keyboard-shortcuts' component={KeyboardShortcuts} content={children} />
-          <WrappedRoute path='/timelines/home' component={HomeTimeline} content={children} componentParams={{ shouldUpdateScroll: this.shouldUpdateScroll }} />
-          <WrappedRoute path='/timelines/public' exact component={PublicTimeline} content={children} componentParams={{ shouldUpdateScroll: this.shouldUpdateScroll }} />
           <WrappedRoute path='/timelines/public/local' exact component={CommunityTimeline} content={children} componentParams={{ shouldUpdateScroll: this.shouldUpdateScroll }} />
           <WrappedRoute path='/timelines/direct' component={DirectTimeline} content={children} componentParams={{ shouldUpdateScroll: this.shouldUpdateScroll }} />
           <WrappedRoute path='/timelines/tag/:id' component={HashtagTimeline} content={children} componentParams={{ shouldUpdateScroll: this.shouldUpdateScroll }} />

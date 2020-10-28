@@ -27,7 +27,6 @@ class UnfollowService < BaseService
 
     create_notification(follow) if !@target_account.local? && @target_account.activitypub?
     create_reject_notification(follow) if @target_account.local? && !@source_account.local? && @source_account.activitypub?
-    UnmergeWorker.perform_async(@target_account.id, @source_account.id) unless @options[:skip_unmerge]
 
     follow
   end

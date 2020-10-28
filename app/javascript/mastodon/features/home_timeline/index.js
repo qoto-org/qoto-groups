@@ -51,7 +51,8 @@ class HomeTimeline extends React.PureComponent {
     if (columnId) {
       dispatch(removeColumn(columnId));
     } else {
-      dispatch(addColumn('HOME', {}));
+      raise("Trying to pin home timeline, should be impossible");
+//      dispatch(addColumn('HOME', {}));
     }
   }
 

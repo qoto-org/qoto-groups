@@ -10,6 +10,7 @@
 #  target_account_id :bigint(8)        not null
 #  show_reblogs      :boolean          default(TRUE), not null
 #  uri               :string
+#  delivery          :boolean          default(TRUE), not null
 #
 
 class FollowRequest < ApplicationRecord
@@ -29,7 +30,6 @@ class FollowRequest < ApplicationRecord
 
   def authorize!
     account.follow!(target_account, reblogs: show_reblogs, uri: uri)
-    MergeWorker.perform_async(target_account.id, account.id) if account.local?
     destroy!
   end
 

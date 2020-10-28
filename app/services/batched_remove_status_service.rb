@@ -27,16 +27,6 @@ class BatchedRemoveStatusService < BaseService
 
     return if options[:skip_side_effects]
 
-    # Batch by source account
-    statuses.group_by(&:account_id).each_value do |account_statuses|
-      account = account_statuses.first.account
-
-      next unless account
-
-      unpush_from_home_timelines(account, account_statuses)
-      unpush_from_list_timelines(account, account_statuses)
-    end
-
     # Cannot be batched
     statuses.each do |status|
       unpush_from_public_timelines(status)
@@ -45,50 +35,22 @@ class BatchedRemoveStatusService < BaseService
 
   private
 
-  def unpush_from_home_timelines(account, statuses)
-    recipients = account.followers_for_local_distribution.to_a
-
-    recipients << account if account.local?
-
-    recipients.each do |follower|
-      statuses.each do |status|
-        FeedManager.instance.unpush_from_home(follower, status)
-      end
-    end
-  end
-
-  def unpush_from_list_timelines(account, statuses)
-    account.lists_for_local_distribution.select(:id, :account_id).each do |list|
-      statuses.each do |status|
-        FeedManager.instance.unpush_from_list(list, status)
-      end
-    end
-  end
-
   def unpush_from_public_timelines(status)
-    return unless status.public_visibility?
+    return unless status.distributable?
 
     payload = @json_payloads[status.id]
 
     redis.pipelined do
-      redis.publish('timeline:public', payload)
       if status.local?
         redis.publish('timeline:public:local', payload)
-      else
-        redis.publish('timeline:public:remote', payload)
-      end
-      if status.media_attachments.any?
-        redis.publish('timeline:public:media', payload)
-        if status.local?
-          redis.publish('timeline:public:local:media', payload)
-        else
-          redis.publish('timeline:public:remote:media', payload)
-        end
+        redis.publish('timeline:public:local:media', payload) if status.media_attachments.any?
       end
 
-      @tags[status.id].each do |hashtag|
-        redis.publish("timeline:hashtag:#{hashtag.mb_chars.downcase}", payload)
-        redis.publish("timeline:hashtag:#{hashtag.mb_chars.downcase}:local", payload) if status.local?
+      if status.public_visibility?
+        @tags[status.id].each do |hashtag|
+          redis.publish("timeline:hashtag:#{hashtag.mb_chars.downcase}", payload)
+          redis.publish("timeline:hashtag:#{hashtag.mb_chars.downcase}:local", payload) if status.local?
+        end
       end
     end
   end

@@ -934,11 +934,11 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Local timeline",
+        "defaultMessage": "Group timeline",
         "id": "column.community"
       },
       {
-        "defaultMessage": "The local timeline is empty. Write something publicly to get the ball rolling!",
+        "defaultMessage": "The Group timeline is empty. Write something publicly to get the ball rolling!",
         "id": "empty_column.community"
       }
     ],
@@ -2931,6 +2931,10 @@
         "id": "tabs_bar.notifications"
       },
       {
+        "defaultMessage": "Group",
+        "id": "tabs_bar.group_timeline"
+      },
+      {
         "defaultMessage": "Local",
         "id": "tabs_bar.local_timeline"
       },
@@ -3011,6 +3015,10 @@
       {
         "defaultMessage": "Notifications",
         "id": "tabs_bar.notifications"
+      },
+      {
+        "defaultMessage": "Group",
+        "id": "tabs_bar.group_timeline"
       },
       {
         "defaultMessage": "Local",

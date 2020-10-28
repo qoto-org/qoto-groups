@@ -9,7 +9,6 @@ class MuteService < BaseService
     if mute.hide_notifications?
       BlockWorker.perform_async(account.id, target_account.id)
     else
-      MuteWorker.perform_async(account.id, target_account.id)
     end
 
     mute

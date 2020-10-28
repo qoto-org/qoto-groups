@@ -25,23 +25,4 @@ class List < ApplicationRecord
   validates_each :account_id, on: :create do |record, _attr, value|
     record.errors.add(:base, I18n.t('lists.errors.limit')) if List.where(account_id: value).count >= PER_ACCOUNT_LIMIT
   end
-
-  before_destroy :clean_feed_manager
-
-  private
-
-  def clean_feed_manager
-    reblog_key       = FeedManager.instance.key(:list, id, 'reblogs')
-    reblogged_id_set = Redis.current.zrange(reblog_key, 0, -1)
-
-    Redis.current.pipelined do
-      Redis.current.del(FeedManager.instance.key(:list, id))
-      Redis.current.del(reblog_key)
-
-      reblogged_id_set.each do |reblogged_id|
-        reblog_set_key = FeedManager.instance.key(:list, id, "reblogs:#{reblogged_id}")
-        Redis.current.del(reblog_set_key)
-      end
-    end
-  end
 end

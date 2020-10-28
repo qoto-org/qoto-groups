@@ -68,7 +68,6 @@ class FollowService < BaseService
     follow = @source_account.follow!(@target_account, reblogs: @options[:reblogs], rate_limit: @options[:with_rate_limit])
 
     LocalNotificationWorker.perform_async(@target_account.id, follow.id, follow.class.name)
-    MergeWorker.perform_async(@target_account.id, @source_account.id)
 
     follow
   end

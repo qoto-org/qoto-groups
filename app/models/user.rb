@@ -391,7 +391,6 @@ class User < ApplicationRecord
 
   def prepare_returning_user!
     ActivityTracker.record('activity:logins', id)
-    regenerate_feed! if needs_feed_update?
   end
 
   def notify_staff_about_pending_account!
@@ -399,16 +398,6 @@ class User < ApplicationRecord
       next unless u.allows_pending_account_emails?
       AdminMailer.new_pending_account(u.account, self).deliver_later
     end
-  end
-
-  def regenerate_feed!
-    return unless Redis.current.setnx("account:#{account_id}:regeneration", true)
-    Redis.current.expire("account:#{account_id}:regeneration", 1.day.seconds)
-    RegenerationWorker.perform_async(account_id)
-  end
-
-  def needs_feed_update?
-    last_sign_in_at < ACTIVE_DURATION.ago
   end
 
   def validate_email_dns?

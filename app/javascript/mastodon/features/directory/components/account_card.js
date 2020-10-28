@@ -199,17 +199,6 @@ class AccountCard extends ImmutablePureComponent {
             onClick={this.handleMute}
           />
         );
-      } else if (!account.get('moved') || following) {
-        buttons = (
-          <IconButton
-            icon={following ? 'user-times' : 'user-plus'}
-            title={intl.formatMessage(
-              following ? messages.unfollow : messages.follow,
-            )}
-            onClick={this.handleFollow}
-            active={following}
-          />
-        );
       }
     }
 

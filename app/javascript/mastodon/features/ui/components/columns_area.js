@@ -15,9 +15,7 @@ import BundleColumnError from './bundle_column_error';
 import {
   Compose,
   Notifications,
-  HomeTimeline,
   CommunityTimeline,
-  PublicTimeline,
   HashtagTimeline,
   DirectTimeline,
   FavouritedStatuses,
@@ -34,10 +32,7 @@ import { scrollRight } from '../../../scroll';
 
 const componentMap = {
   'COMPOSE': Compose,
-  'HOME': HomeTimeline,
   'NOTIFICATIONS': Notifications,
-  'PUBLIC': PublicTimeline,
-  'REMOTE': PublicTimeline,
   'COMMUNITY': CommunityTimeline,
   'HASHTAG': HashtagTimeline,
   'DIRECT': DirectTimeline,

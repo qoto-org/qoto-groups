@@ -21,7 +21,7 @@ class Api::V1::Timelines::ListController < Api::BaseController
   end
 
   def set_statuses
-    @statuses = cached_list_statuses
+    @statuses = Status.none
   end
 
   def cached_list_statuses

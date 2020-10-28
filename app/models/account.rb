@@ -50,6 +50,7 @@
 #  avatar_storage_schema_version :integer
 #  header_storage_schema_version :integer
 #  devices_url                   :string
+#  sensitized_at                 :datetime
 #
 
 class Account < ApplicationRecord
@@ -521,7 +522,6 @@ class Account < ApplicationRecord
   before_create :generate_keys
   before_validation :prepare_contents, if: :local?
   before_validation :prepare_username, on: :create
-  before_destroy :clean_feed_manager
 
   private
 
@@ -550,20 +550,5 @@ class Account < ApplicationRecord
 
   def emojifiable_text
     [note, display_name, fields.map(&:name), fields.map(&:value)].join(' ')
-  end
-
-  def clean_feed_manager
-    reblog_key       = FeedManager.instance.key(:home, id, 'reblogs')
-    reblogged_id_set = Redis.current.zrange(reblog_key, 0, -1)
-
-    Redis.current.pipelined do
-      Redis.current.del(FeedManager.instance.key(:home, id))
-      Redis.current.del(reblog_key)
-
-      reblogged_id_set.each do |reblogged_id|
-        reblog_set_key = FeedManager.instance.key(:home, id, "reblogs:#{reblogged_id}")
-        Redis.current.del(reblog_set_key)
-      end
-    end
   end
 end
