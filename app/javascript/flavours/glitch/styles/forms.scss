@@ -112,15 +112,6 @@ code {
       padding: 0.2em 0.4em;
       background: darken($ui-base-color, 12%);
     }
-
-    li {
-      list-style: disc;
-      margin-left: 18px;
-    }
-  }
-
-  ul.hint {
-    margin-bottom: 15px;
   }
 
   span.hint {
@@ -140,10 +131,6 @@ code {
       margin-top: 15px;
       margin-bottom: 0;
     }
-  }
-
-  .otp-hint {
-    margin-bottom: 25px;
   }
 
   .card {
@@ -291,14 +278,6 @@ code {
       .fields-row__column.fields-group,
       .fields-row__column {
         margin-bottom: 25px;
-      }
-    }
-
-    .fields-group.invited-by {
-      margin-bottom: 30px;
-
-      .hint {
-        text-align: center;
       }
     }
   }
@@ -591,7 +570,7 @@ code {
 
   &.alert {
     border: 1px solid rgba($error-value-color, 0.5);
-    background: rgba($error-value-color, 0.1);
+    background: rgba($error-value-color, 0.25);
     color: $error-value-color;
   }
 
@@ -615,7 +594,7 @@ code {
     box-sizing: border-box;
     display: block;
     width: 100%;
-    border: 0;
+    border: none;
     padding: 10px;
     font-family: $font-monospace, monospace;
     background: $ui-base-color;
@@ -650,15 +629,6 @@ code {
 
   @media screen and (max-width: 740px) and (min-width: 441px) {
     margin-top: 40px;
-  }
-
-  &.translation-prompt {
-    text-align: unset;
-    color: unset;
-
-    a {
-      text-decoration: underline;
-    }
   }
 }
 
