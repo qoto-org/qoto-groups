@@ -156,7 +156,7 @@ class Account < ApplicationRecord
   alias bot bot?
 
   def bot=(val)
-    self.actor_type = ActiveModel::Type::Boolean.new.cast(val) ? 'Service' : 'Person'
+    self.actor_type = ActiveModel::Type::Boolean.new.cast(val) ? 'Service' : 'Group'
   end
 
   def group?
@@ -519,11 +519,18 @@ class Account < ApplicationRecord
     @emojis ||= CustomEmoji.from_text(emojifiable_text, domain)
   end
 
+  before_create :make_group
   before_create :generate_keys
   before_validation :prepare_contents, if: :local?
   before_validation :prepare_username, on: :create
 
   private
+
+  def make_group
+    return unless local?
+
+    self.actor_type = 'Group'
+  end
 
   def prepare_contents
     display_name&.strip!
