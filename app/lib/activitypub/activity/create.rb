@@ -492,6 +492,8 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
   end
 
   def forward_for_group
+    return if @status.reply?
+
     groups = Account.where(id: @status.mentions.pluck(:account_id)).where(actor_type: 'Group')
 
     groups.each do |group|
