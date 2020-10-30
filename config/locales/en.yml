@@ -16,7 +16,7 @@ en:
     contact: Contact
     contact_missing: Not set
     contact_unavailable: N/A
-    discover_users: Discover users
+    discover_users: Discover groups
     documentation: Documentation
     federation_hint_html: With an account on %{instance} you'll be able to follow people on any Mastodon server and beyond.
     get_apps: Try a mobile app
@@ -766,7 +766,7 @@ en:
       username_unavailable: Your username will remain unavailable
   directories:
     directory: Profile directory
-    explanation: Discover users based on their interests
+    explanation: Discover groups based on their topic
     explore_mastodon: Explore %{title}
   domain_validator:
     invalid_domain: is not a valid domain name
