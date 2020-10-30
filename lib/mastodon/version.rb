@@ -17,7 +17,7 @@ module Mastodon
     end
 
     def flags
-      ''
+      '-qoto'
     end
 
     def suffix
@@ -33,11 +33,11 @@ module Mastodon
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY') { 'tootsuite/mastodon' }
+      ENV.fetch('GITHUB_REPOSITORY') { 'qoto/qoto-groups' }
     end
 
     def source_base_url
-      ENV.fetch('SOURCE_BASE_URL') { "https://github.com/#{repository}" }
+      ENV.fetch('SOURCE_BASE_URL') { "https://git.qoto.org/#{repository}" }
     end
 
     # specify git tag or commit hash here
@@ -47,7 +47,7 @@ module Mastodon
 
     def source_url
       if source_tag
-        "#{source_base_url}/tree/#{source_tag}"
+        "#{source_base_url}/-/tree/#{source_tag}"
       else
         source_base_url
       end
