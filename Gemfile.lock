@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -99,7 +100,7 @@ GEM
     av (0.9.0)
       cocaine (~> 0.5.3)
     aws-eventstream (1.1.0)
-    aws-partitions (1.338.0)
+    aws-partitions (1.473.0)
     aws-sdk-core (3.103.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
