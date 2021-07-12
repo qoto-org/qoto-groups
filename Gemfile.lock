@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -93,7 +94,7 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     arel (9.0.0)
-    ast (2.4.1)
+    ast (2.4.2)
     attr_encrypted (3.1.0)
       encryptor (~> 3.0.0)
     av (0.9.0)
@@ -410,7 +411,7 @@ GEM
     parallel (1.19.2)
     parallel_tests (3.0.0)
       parallel
-    parser (2.7.1.4)
+    parser (3.0.2.0)
       ast (~> 2.4.1)
     parslet (2.0.0)
     pastel (0.7.4)
