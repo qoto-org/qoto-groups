@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -231,7 +232,7 @@ GEM
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
-    fastimage (2.1.7)
+    fastimage (2.2.5)
     ffi (1.10.0)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
