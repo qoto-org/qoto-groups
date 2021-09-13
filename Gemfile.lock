@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -407,7 +408,7 @@ GEM
     paperclip-av-transcoder (0.6.4)
       av (~> 0.9.0)
       paperclip (>= 2.5.2)
-    parallel (1.19.2)
+    parallel (1.21.0)
     parallel_tests (3.0.0)
       parallel
     parser (2.7.1.4)
@@ -745,7 +746,7 @@ DEPENDENCIES
   ox (~> 2.13)
   paperclip (~> 6.0)
   paperclip-av-transcoder (~> 0.6)
-  parallel (~> 1.19)
+  parallel (~> 1.21)
   parallel_tests (~> 3.0)
   parslet
   pg (~> 1.2)
