@@ -97,7 +97,7 @@ gem 'strong_migrations', '~> 0.6'
 gem 'tty-prompt', '~> 0.21', require: false
 gem 'twitter-text', '~> 1.14'
 gem 'tzinfo-data', '~> 1.2020'
-gem 'webpacker', '~> 5.1'
+gem 'webpacker', '~> 5.4'
 gem 'webpush'
 
 gem 'hcaptcha', git: 'https://github.com/firstmoversadvantage/hcaptcha', ref:  'e65246bea49374566a9dbaead59fdb35b46b086d', require: 'hcaptcha/rails'
