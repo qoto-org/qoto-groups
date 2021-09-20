@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -375,7 +376,7 @@ GEM
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
-    nio4r (2.5.2)
+    nio4r (2.5.8)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.2)
@@ -437,7 +438,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.5)
-    puma (4.3.5)
+    puma (5.5.0)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
@@ -756,7 +757,7 @@ DEPENDENCIES
   private_address_check (~> 0.5)
   pry-byebug (~> 3.9)
   pry-rails (~> 0.3)
-  puma (~> 4.3)
+  puma (~> 5.5)
   pundit (~> 2.1)
   rack (~> 2.2.3)
   rack-attack (~> 6.3)
