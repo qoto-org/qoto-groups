@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -571,7 +572,7 @@ GEM
       nokogiri (>= 1.8.0)
       nokogumbo (~> 2.0)
     semantic_range (2.3.0)
-    sidekiq (6.1.0)
+    sidekiq (6.4.0)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -777,7 +778,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.6)
   ruby-progressbar (~> 1.10)
   sanitize (~> 5.2)
-  sidekiq (~> 6.0)
+  sidekiq (~> 6.4)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-scheduler (~> 3.0)
   sidekiq-unique-jobs (~> 6.0)
