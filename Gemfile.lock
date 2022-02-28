@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -607,7 +608,7 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    stackprof (0.2.15)
+    stackprof (0.2.19)
     statsd-ruby (1.4.0)
     stoplight (2.2.0)
     streamio-ffmpeg (3.0.2)
