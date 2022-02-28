@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -609,7 +610,7 @@ GEM
       net-ssh (>= 2.8.0)
     stackprof (0.2.15)
     statsd-ruby (1.4.0)
-    stoplight (2.2.0)
+    stoplight (3.0.0)
     streamio-ffmpeg (3.0.2)
       multi_json (~> 1.8)
     strong_migrations (0.6.8)
@@ -787,7 +788,7 @@ DEPENDENCIES
   sprockets (~> 3.7.2)
   sprockets-rails (~> 3.2)
   stackprof
-  stoplight (~> 2.2.0)
+  stoplight (~> 3.0.0)
   streamio-ffmpeg (~> 3.0)
   strong_migrations (~> 0.6)
   thor (~> 0.20)
