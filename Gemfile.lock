@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -419,7 +420,7 @@ GEM
     pg (1.2.3)
     pghero (2.5.1)
       activerecord (>= 5)
-    pkg-config (1.4.1)
+    pkg-config (1.4.9)
     premailer (1.11.1)
       addressable
       css_parser (>= 1.6.0)
