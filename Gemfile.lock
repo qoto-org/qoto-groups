@@ -4,6 +4,7 @@ GIT
   ref: e65246bea49374566a9dbaead59fdb35b46b086d
   specs:
     hcaptcha (6.0.1)
+      json
 
 GIT
   remote: https://github.com/ianheggie/health_check
@@ -224,7 +225,7 @@ GEM
     erubi (1.9.0)
     et-orbi (1.2.4)
       tzinfo
-    excon (0.75.0)
+    excon (0.93.0)
     fabrication (2.21.1)
     faker (2.13.0)
       i18n (>= 1.6, < 2)
